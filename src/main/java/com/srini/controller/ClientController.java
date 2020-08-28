@@ -34,16 +34,18 @@ public class ClientController {
 
     @GetMapping(value = "/quotes-non-blocking",
             produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<Quote> getquotesNonBlocking() {
+    public List<Quote> getquotesNonBlocking() {
         System.out.println("Starting NON-BLOCKING Controller!");
-        Flux<Quote> quoteFlux = WebClient.create()
+        List<Quote> result = WebClient.create()
                 .get()
                 .uri(URI)
                 .retrieve()
-                .bodyToFlux(Quote.class);
+                .bodyToFlux(Quote.class)
+                .collectList()
+                .block();
 
-        quoteFlux.subscribe(quote -> System.out.println(quote.toString()));
+        result.forEach(quote -> System.out.println(quote.toString()));
         System.out.println("Exiting NON-BLOCKING Controller!");
-        return quoteFlux;
+        return result;
     }
 }
