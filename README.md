@@ -1,5 +1,6 @@
 # spring-caching-and-webclient
 A simple POC to showcase the Spring Caching abstraction to implement a JVM based Cache.
+Also has a simple implementation that uses WebClient to invoke a REST service.
 
 # Reference links
 ## Caching
