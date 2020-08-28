@@ -1,0 +1,9 @@
+com/srini/controller/ClientController.java
+ com.srini.controller.ClientController
+ com.srini.controller.ClientController$1
+com/example/consumingrest/Quote.java
+ com.example.consumingrest.Quote
+com/srini/SpringBootApp.java
+ com.srini.SpringBootApp
+com/srini/controller/ServerController.java
+ com.srini.controller.ServerController
