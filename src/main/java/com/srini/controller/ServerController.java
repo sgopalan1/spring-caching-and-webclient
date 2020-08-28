@@ -11,7 +11,7 @@ import java.util.List;
 @CacheConfig(cacheNames = "books")
 @RestController
 public class ServerController {
-    @GetMapping("/slow-service-tweets")
+    @GetMapping("/slow-service-quotes")
     public List<Quote> getAllQuotes() throws InterruptedException {
         Thread.sleep(2000L); // delay
         return List.of(
@@ -21,7 +21,7 @@ public class ServerController {
     }
 
     @Cacheable
-    @GetMapping("/cached-slow-service-tweets")
+    @GetMapping("/cached-slow-service-quotes")
     public List<Quote> getAllQuotesCached() throws InterruptedException {
         Thread.sleep(2000L); // delay
         return List.of(

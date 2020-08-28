@@ -15,10 +15,10 @@ import java.util.List;
 
 @RestController
 public class ClientController {
-    private static final String URI = "http://localhost:8080/slow-service-tweets";
+    private static final String URI = "http://localhost:8080/slow-service-quotes";
 
-    @GetMapping("/tweets-blocking")
-    public List<Quote> getTweetsBlocking() {
+    @GetMapping("/quotes-blocking")
+    public List<Quote> getquotesBlocking() {
         System.out.println("Starting BLOCKING Controller!");
 
         RestTemplate restTemplate = new RestTemplate();
@@ -27,23 +27,23 @@ public class ClientController {
                 new ParameterizedTypeReference<List<Quote>>(){});
 
         List<Quote> result = response.getBody();
-        result.forEach(tweet -> System.out.println(tweet.toString()));
+        result.forEach(quote -> System.out.println(quote.toString()));
         System.out.println("Exiting BLOCKING Controller!");
         return result;
     }
 
-    @GetMapping(value = "/tweets-non-blocking",
+    @GetMapping(value = "/quotes-non-blocking",
             produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<Quote> getTweetsNonBlocking() {
+    public Flux<Quote> getquotesNonBlocking() {
         System.out.println("Starting NON-BLOCKING Controller!");
-        Flux<Quote> tweetFlux = WebClient.create()
+        Flux<Quote> quoteFlux = WebClient.create()
                 .get()
                 .uri(URI)
                 .retrieve()
                 .bodyToFlux(Quote.class);
 
-        tweetFlux.subscribe(tweet -> System.out.println(tweet.toString()));
+        quoteFlux.subscribe(quote -> System.out.println(quote.toString()));
         System.out.println("Exiting NON-BLOCKING Controller!");
-        return tweetFlux;
+        return quoteFlux;
     }
 }
