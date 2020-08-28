@@ -1,6 +1,6 @@
 package com.srini.controller;
 
-import com.example.consumingrest.Quote;
+import com.srini.model.Quote;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;

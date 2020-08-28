@@ -1,4 +1,4 @@
-package com.example.consumingrest;
+package com.srini.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

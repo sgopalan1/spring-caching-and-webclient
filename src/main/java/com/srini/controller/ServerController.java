@@ -1,6 +1,6 @@
 package com.srini.controller;
 
-import com.example.consumingrest.Quote;
+import com.srini.model.Quote;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
